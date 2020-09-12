@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		87529EFA250B90C40056C74A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529EF9250B90C40056C74A /* AppDelegate.swift */; };
-		87529EFC250B90C40056C74A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529EFB250B90C40056C74A /* ContentView.swift */; };
 		87529EFE250B90C60056C74A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87529EFD250B90C60056C74A /* Assets.xcassets */; };
 		87529F01250B90C60056C74A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87529F00250B90C60056C74A /* Preview Assets.xcassets */; };
-		87529F04250B90C60056C74A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87529F02250B90C60056C74A /* Main.storyboard */; };
+		87529F31250CBAC50056C74A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529F30250CBAC50056C74A /* main.swift */; };
+		87529F34250CBB450056C74A /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529F33250CBB450056C74A /* MainFactory.swift */; };
+		87529F37250CBB5B0056C74A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529F36250CBB5B0056C74A /* MainView.swift */; };
+		87529F39250CBBB90056C74A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529F38250CBBB90056C74A /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		87529EF6250B90C40056C74A /* Vakho's Case Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vakho's Case Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87529EF9250B90C40056C74A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87529EFB250B90C40056C74A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87529EFD250B90C60056C74A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87529F00250B90C60056C74A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		87529F03250B90C60056C74A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87529F05250B90C60056C74A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87529F06250B90C60056C74A /* Vakho_s_Case_Converter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vakho_s_Case_Converter.entitlements; sourceTree = "<group>"; };
+		87529F30250CBAC50056C74A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		87529F33250CBB450056C74A /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
+		87529F36250CBB5B0056C74A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		87529F38250CBBB90056C74A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +59,10 @@
 		87529EF8250B90C40056C74A /* Vakho's Case Converter */ = {
 			isa = PBXGroup;
 			children = (
-				87529EF9250B90C40056C74A /* AppDelegate.swift */,
-				87529EFB250B90C40056C74A /* ContentView.swift */,
-				87529EFD250B90C60056C74A /* Assets.xcassets */,
-				87529F02250B90C60056C74A /* Main.storyboard */,
-				87529F05250B90C60056C74A /* Info.plist */,
-				87529F06250B90C60056C74A /* Vakho_s_Case_Converter.entitlements */,
+				87529F2C250CBA7D0056C74A /* Supporting FIles */,
+				87529F2D250CBA870056C74A /* App Control */,
+				87529F2F250CBA9D0056C74A /* Windows and Views */,
+				87529F2E250CBA8F0056C74A /* Resources */,
 				87529EFF250B90C60056C74A /* Preview Content */,
 			);
 			path = "Vakho's Case Converter";
@@ -72,6 +74,50 @@
 				87529F00250B90C60056C74A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		87529F2C250CBA7D0056C74A /* Supporting FIles */ = {
+			isa = PBXGroup;
+			children = (
+				87529F05250B90C60056C74A /* Info.plist */,
+				87529F06250B90C60056C74A /* Vakho_s_Case_Converter.entitlements */,
+			);
+			name = "Supporting FIles";
+			sourceTree = "<group>";
+		};
+		87529F2D250CBA870056C74A /* App Control */ = {
+			isa = PBXGroup;
+			children = (
+				87529F30250CBAC50056C74A /* main.swift */,
+				87529EF9250B90C40056C74A /* AppDelegate.swift */,
+			);
+			path = "App Control";
+			sourceTree = "<group>";
+		};
+		87529F2E250CBA8F0056C74A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				87529EFD250B90C60056C74A /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		87529F2F250CBA9D0056C74A /* Windows and Views */ = {
+			isa = PBXGroup;
+			children = (
+				87529F32250CBB3B0056C74A /* Main */,
+			);
+			path = "Windows and Views";
+			sourceTree = "<group>";
+		};
+		87529F32250CBB3B0056C74A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				87529F36250CBB5B0056C74A /* MainView.swift */,
+				87529F38250CBBB90056C74A /* MainViewModel.swift */,
+				87529F33250CBB450056C74A /* MainFactory.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +178,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87529F04250B90C60056C74A /* Main.storyboard in Resources */,
 				87529F01250B90C60056C74A /* Preview Assets.xcassets in Resources */,
 				87529EFE250B90C60056C74A /* Assets.xcassets in Resources */,
 			);
@@ -145,23 +190,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87529EFC250B90C40056C74A /* ContentView.swift in Sources */,
+				87529F39250CBBB90056C74A /* MainViewModel.swift in Sources */,
+				87529F34250CBB450056C74A /* MainFactory.swift in Sources */,
 				87529EFA250B90C40056C74A /* AppDelegate.swift in Sources */,
+				87529F37250CBB5B0056C74A /* MainView.swift in Sources */,
+				87529F31250CBAC50056C74A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		87529F02250B90C60056C74A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87529F03250B90C60056C74A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		87529F07250B90C60056C74A /* Debug */ = {
