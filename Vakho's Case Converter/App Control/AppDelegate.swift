@@ -31,7 +31,7 @@ import SwiftUI
 // MARK:- App Delegate
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        MainFactory.shared.createWindow(managedObjectContext: managedObjectContext)
+        MainFactory.shared.createWindow()
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
