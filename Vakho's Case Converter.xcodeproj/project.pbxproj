@@ -33,6 +33,7 @@
 		8797A87325100979001DE255 /* WindowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87225100979001DE255 /* WindowFactory.swift */; };
 		8797A87525109D87001DE255 /* SpecialWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87425109D87001DE255 /* SpecialWord.swift */; };
 		8797A8772510ACC8001DE255 /* Delimiters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A8762510ACC8001DE255 /* Delimiters.swift */; };
+		8797A8792510B57A001DE255 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A8782510B57A001DE255 /* Conversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		8797A87225100979001DE255 /* WindowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowFactory.swift; sourceTree = "<group>"; };
 		8797A87425109D87001DE255 /* SpecialWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialWord.swift; sourceTree = "<group>"; };
 		8797A8762510ACC8001DE255 /* Delimiters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delimiters.swift; sourceTree = "<group>"; };
+		8797A8782510B57A001DE255 /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 		8797A82B250E20F7001DE255 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8797A8782510B57A001DE255 /* Conversion.swift */,
 				8797A82C250E2102001DE255 /* WordGroup.swift */,
 				8797A87425109D87001DE255 /* SpecialWord.swift */,
 				8797A82E250E2130001DE255 /* SpecialWords.swift */,
@@ -321,6 +324,7 @@
 				8797A87325100979001DE255 /* WindowFactory.swift in Sources */,
 				87529F4E250E0E070056C74A /* WordsGridView.swift in Sources */,
 				87529F46250DFF930056C74A /* NumberPickerView.swift in Sources */,
+				8797A8792510B57A001DE255 /* Conversion.swift in Sources */,
 				8797A82F250E2130001DE255 /* SpecialWords.swift in Sources */,
 				87529F42250DFBCA0056C74A /* Color.swift in Sources */,
 				8797A87525109D87001DE255 /* SpecialWord.swift in Sources */,

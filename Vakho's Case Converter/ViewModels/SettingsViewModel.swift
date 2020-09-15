@@ -10,11 +10,13 @@ import Foundation
 
 // MARK:- Settings View Model
 final class SettingsViewModel: ObservableObject {
+    @Published var conversion: Conversion = .title
+    
     @Published var capitalizeFirstAndLast: Bool = true
     
-    @Published var principalWord: WordGroup = .init(capitalize: true, length: 4, range: 4...10)
+    @Published var principalWord: WordGroup = .init(ticked: true, length: 4, range: 4...10)
     
-    @Published var specialWord: WordGroup = .init(capitalize: true, length: 4, range: 1...10)
+    @Published var specialWord: WordGroup = .init(ticked: true, length: 3, range: 1...10)
     @Published var specialWords: Set<SpecialWord> = SpecialWord.defaultValue
     
     @Published var capitalizeDelimeteredCompounds: Bool = true
@@ -27,7 +29,7 @@ final class SettingsViewModel: ObservableObject {
 // MARK:- Sync
 extension SettingsViewModel {
     func syncSpecialWord() {
-        switch specialWord.capitalize {
+        switch specialWord.ticked {
         case false: specialWords = []
         case true: specialWords = SpecialWord.defaultValue
         }
@@ -35,8 +37,8 @@ extension SettingsViewModel {
     
     func syncSpecialWords() {
         switch specialWords.isEmpty {
-        case false: specialWord.capitalize = true
-        case true: specialWord.capitalize = false
+        case false: specialWord.ticked = true
+        case true: specialWord.ticked = false
         }
     }
 }

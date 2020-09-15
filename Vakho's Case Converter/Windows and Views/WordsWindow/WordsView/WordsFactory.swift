@@ -20,7 +20,7 @@ final class WordsFactory: WindowFactory, WindowFactoryable {
     )
     
     let titleBar: WindowFactoryTitleBarSettings = .init(
-        title: "Words",
+        title: "Articles, Prepositions, and Conjunctions",
         isTransparent: true,
         titleButtons: [.close, .miniaturize, .zoom]
     )

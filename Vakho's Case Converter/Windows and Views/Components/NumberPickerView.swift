@@ -73,7 +73,7 @@ extension NumberPickerView {
                 self.value = newValue
             }
         )
-            .frame(width: 40)
+            .frame(width: 30)
             
             .multilineTextAlignment(.trailing)
             .font(.system(.footnote, design: .monospaced))

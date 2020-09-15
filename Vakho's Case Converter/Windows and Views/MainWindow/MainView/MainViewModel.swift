@@ -15,7 +15,9 @@ extension MainView {
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 650, height: 715)
+        static let view: CGSize = .init(width: 670, height: 745)
+        
+        static let picker: CGSize = .init(width: 135, height: -1)
 
         // MARK: Initializers
         private init() {}

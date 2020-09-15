@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Word Group
 struct WordGroup {
-    var capitalize: Bool
+    var ticked: Bool
     var length: Int
     let range: ClosedRange<Int>
 }
