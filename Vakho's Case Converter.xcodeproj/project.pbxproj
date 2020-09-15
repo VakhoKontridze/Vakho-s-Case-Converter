@@ -32,6 +32,7 @@
 		8797A867250FCB41001DE255 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A866250FCB41001DE255 /* View.swift */; };
 		8797A87325100979001DE255 /* WindowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87225100979001DE255 /* WindowFactory.swift */; };
 		8797A87525109D87001DE255 /* SpecialWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87425109D87001DE255 /* SpecialWord.swift */; };
+		8797A8772510ACC8001DE255 /* Delimiters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A8762510ACC8001DE255 /* Delimiters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		8797A866250FCB41001DE255 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8797A87225100979001DE255 /* WindowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowFactory.swift; sourceTree = "<group>"; };
 		8797A87425109D87001DE255 /* SpecialWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialWord.swift; sourceTree = "<group>"; };
+		8797A8762510ACC8001DE255 /* Delimiters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delimiters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				8797A82C250E2102001DE255 /* WordGroup.swift */,
 				8797A87425109D87001DE255 /* SpecialWord.swift */,
 				8797A82E250E2130001DE255 /* SpecialWords.swift */,
+				8797A8762510ACC8001DE255 /* Delimiters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				87529F4A250DFFB70056C74A /* ClosedRange.swift in Sources */,
 				87529EFA250B90C40056C74A /* AppDelegate.swift in Sources */,
 				87529F50250E0EC20056C74A /* Array.swift in Sources */,
+				8797A8772510ACC8001DE255 /* Delimiters.swift in Sources */,
 				87529F37250CBB5B0056C74A /* MainView.swift in Sources */,
 				87529F31250CBAC50056C74A /* main.swift in Sources */,
 				87529F49250DFFB70056C74A /* Binding.swift in Sources */,

@@ -11,6 +11,8 @@ import SwiftUI
 // MARK:- Main View
 struct MainView: View {
     @ObservedObject private var settings: SettingsViewModel = .init()
+    
+    @State private var title: String = ""
 }
 
 // MARK:- Body
@@ -18,19 +20,28 @@ extension MainView {
     var body: some View {
         VStack(content: {
             general
+            principals
+            specialWords
+            compounds
+            misc
+            convert
         })
-            .frame(size: ViewModel.window, alignment: .top)
             .padding(10)
+            .frame(size: ViewModel.view, alignment: .top)
     }
     
     private var general: some View {
-        SectionView(title: "General", content: {
+        SectionView(content: {
             CheckBoxView(
                 isOn: self.$settings.capitalizeFirstAndLast,
-                title: "Capitalize the first and last words"
+                title: "Capitalize first and last words"
             )
                 .padding(.bottom, 7)
-
+        })
+    }
+    
+    private var principals: some View {
+        SectionView(content: {
             HStack(spacing: 0, content: {
                 CheckBoxView(
                     isOn: self.$settings.principalWord.capitalize,
@@ -44,8 +55,12 @@ extension MainView {
                 Text(" letters or more")
                     .onTapGesture(count: 1, perform: { self.settings.principalWord.capitalize.toggle() })
             })
-            
-            VStack(alignment: .leading, spacing: 5, content: {
+        })
+    }
+    
+    private var specialWords: some View {
+        SectionView(content: {
+            VStack(alignment: .leading, spacing: 10, content: {
                 HStack(spacing: 0, content: {
                     CheckBoxView(
                         isOn: self.$settings.specialWord.capitalize.onChange(self.settings.syncSpecialWord),
@@ -87,13 +102,43 @@ extension MainView {
                 })
                     .padding(.leading, 23)
             })
-            
-            CheckBoxView(isOn: self.$settings.fixSpacing, title: "Fix multiple spacing")
-                .padding(.top, 5)
         })
     }
-//    Capitalize both words of hyphenated compounds
-//    Capitalize the first word after a colon or dash
+    
+    private var compounds: some View {
+        SectionView(content: {
+            CheckBoxView(
+                isOn: self.$settings.capitalizeDelimeteredCompounds,
+                title: "Capitalize both words of delimetered compounds",
+                details: Delimiters.allDelimiters
+            )
+
+            CheckBoxView(
+                isOn: self.$settings.capitalizeHyphenatedCompounds,
+                title: "Capitalize both words of hypenated compounds"
+            )
+        })
+    }
+    
+    private var misc: some View {
+        SectionView(content: {
+            CheckBoxView(
+                isOn: self.$settings.fixSpacing,
+                title: "Fix multiple spacing"
+            )
+        })
+    }
+    
+    private var convert: some View {
+        SectionView(content: {
+            HStack(spacing: 20, content: {
+                TextField("", text: self.$title)
+                
+                Button(action: {}, label: { Text("Convert") })
+                    .disabled(self.title.isEmpty)
+            })
+        })
+    }
 }
 
 // MARK:- Preview

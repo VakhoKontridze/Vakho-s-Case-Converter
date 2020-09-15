@@ -15,7 +15,7 @@ extension MainView {
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 650 - 20, height: 650 - 20)   // -20 comes from padding applied to the view
+        static let view: CGSize = .init(width: 650, height: 715)
 
         // MARK: Initializers
         private init() {}

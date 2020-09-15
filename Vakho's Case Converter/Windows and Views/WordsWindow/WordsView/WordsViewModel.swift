@@ -15,7 +15,7 @@ extension WordsView {
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 600 - 20, height: 600 - 20)   // -20 comes from padding applied to the view
+        static let view: CGSize = .init(width: 600, height: 600)
         
         // MARK: Initializers
         private init() {}

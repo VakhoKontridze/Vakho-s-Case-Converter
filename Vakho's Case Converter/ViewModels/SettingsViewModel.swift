@@ -17,6 +17,9 @@ final class SettingsViewModel: ObservableObject {
     @Published var specialWord: WordGroup = .init(capitalize: true, length: 4, range: 1...10)
     @Published var specialWords: Set<SpecialWord> = SpecialWord.defaultValue
     
+    @Published var capitalizeDelimeteredCompounds: Bool = true
+    @Published var capitalizeHyphenatedCompounds: Bool = true
+    
     @Published var fixSpacing: Bool = true
 }
 

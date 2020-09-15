@@ -78,12 +78,12 @@ extension WordsView {
                 })
             })
         })
+            .padding(10)
             .frame(
-                minWidth: ViewModel.window.width, idealWidth: ViewModel.window.width, maxWidth: .infinity,
-                minHeight: ViewModel.window.height, idealHeight: ViewModel.window.height, maxHeight: .infinity,
+                minWidth: ViewModel.view.width, idealWidth: ViewModel.view.width, maxWidth: .infinity,
+                minHeight: ViewModel.view.height, idealHeight: ViewModel.view.height, maxHeight: .infinity,
                 alignment: .top
             )
-            .padding(10)
     }
 }
 
