@@ -17,9 +17,6 @@ extension WordsView {
         
         static let view: CGSize = .init(width: 600 - 20, height: 600 - 20)   // -20 comes from padding applied to the view
         
-        static let numbering: CGSize = .init(width: 25, height: -1)
-        static let row: CGSize = .init(width: -1, height: 35)
-        
         // MARK: Initializers
         private init() {}
     }

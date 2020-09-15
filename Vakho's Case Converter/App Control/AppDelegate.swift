@@ -32,6 +32,8 @@ import SwiftUI
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         MainFactory.shared.createWindow()
+        
+        _ = SpecialWords.shared        // Initializes instance
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -59,4 +61,11 @@ extension AppDelegate {
     }
 
     func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? { managedObjectContext.undoManager }
+}
+
+// MARK:- Exit
+extension AppDelegate {
+    static func terminateApp() {
+        exit(0)
+    }
 }

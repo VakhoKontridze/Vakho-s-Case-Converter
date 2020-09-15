@@ -27,8 +27,11 @@
 		87529F5B250E1C330056C74A /* WordsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87529F5A250E1C330056C74A /* WordsFactory.swift */; };
 		8797A82A250E20C5001DE255 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A829250E20C5001DE255 /* SettingsViewModel.swift */; };
 		8797A82D250E2102001DE255 /* WordGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A82C250E2102001DE255 /* WordGroup.swift */; };
-		8797A82F250E2130001DE255 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A82E250E2130001DE255 /* Words.swift */; };
-		8797A836250E22CF001DE255 /* Words.json in Resources */ = {isa = PBXBuildFile; fileRef = 8797A835250E22CF001DE255 /* Words.json */; };
+		8797A82F250E2130001DE255 /* SpecialWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A82E250E2130001DE255 /* SpecialWords.swift */; };
+		8797A836250E22CF001DE255 /* SpecialWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 8797A835250E22CF001DE255 /* SpecialWords.json */; };
+		8797A867250FCB41001DE255 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A866250FCB41001DE255 /* View.swift */; };
+		8797A87325100979001DE255 /* WindowFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87225100979001DE255 /* WindowFactory.swift */; };
+		8797A87525109D87001DE255 /* SpecialWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A87425109D87001DE255 /* SpecialWord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +58,11 @@
 		87529F5A250E1C330056C74A /* WordsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsFactory.swift; sourceTree = "<group>"; };
 		8797A829250E20C5001DE255 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		8797A82C250E2102001DE255 /* WordGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGroup.swift; sourceTree = "<group>"; };
-		8797A82E250E2130001DE255 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
-		8797A835250E22CF001DE255 /* Words.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Words.json; sourceTree = "<group>"; };
+		8797A82E250E2130001DE255 /* SpecialWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialWords.swift; sourceTree = "<group>"; };
+		8797A835250E22CF001DE255 /* SpecialWords.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SpecialWords.json; sourceTree = "<group>"; };
+		8797A866250FCB41001DE255 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		8797A87225100979001DE255 /* WindowFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowFactory.swift; sourceTree = "<group>"; };
+		8797A87425109D87001DE255 /* SpecialWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialWord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 				87529F2D250CBA870056C74A /* App Control */,
 				87529F2F250CBA9D0056C74A /* Windows and Views */,
 				8797A828250E20B4001DE255 /* ViewModels */,
+				8797A87125100969001DE255 /* Services */,
 				8797A82B250E20F7001DE255 /* Models */,
 				87529F40250DFBBF0056C74A /* Extensions */,
 				87529F2E250CBA8F0056C74A /* Resources */,
@@ -131,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				87529EFD250B90C60056C74A /* Assets.xcassets */,
-				8797A835250E22CF001DE255 /* Words.json */,
+				8797A835250E22CF001DE255 /* SpecialWords.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -180,6 +187,7 @@
 			children = (
 				87529F4F250E0EC20056C74A /* Array.swift */,
 				87529F48250DFFB70056C74A /* ClosedRange.swift */,
+				8797A866250FCB41001DE255 /* View.swift */,
 				87529F47250DFFB70056C74A /* Binding.swift */,
 				87529F41250DFBCA0056C74A /* Color.swift */,
 			);
@@ -216,9 +224,18 @@
 			isa = PBXGroup;
 			children = (
 				8797A82C250E2102001DE255 /* WordGroup.swift */,
-				8797A82E250E2130001DE255 /* Words.swift */,
+				8797A87425109D87001DE255 /* SpecialWord.swift */,
+				8797A82E250E2130001DE255 /* SpecialWords.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8797A87125100969001DE255 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8797A87225100979001DE255 /* WindowFactory.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,7 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87529F01250B90C60056C74A /* Preview Assets.xcassets in Resources */,
-				8797A836250E22CF001DE255 /* Words.json in Resources */,
+				8797A836250E22CF001DE255 /* SpecialWords.json in Resources */,
 				87529EFE250B90C60056C74A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,12 +315,15 @@
 				8797A82D250E2102001DE255 /* WordGroup.swift in Sources */,
 				87529F57250E1B480056C74A /* WordsViewModel.swift in Sources */,
 				87529F5B250E1C330056C74A /* WordsFactory.swift in Sources */,
+				8797A87325100979001DE255 /* WindowFactory.swift in Sources */,
 				87529F4E250E0E070056C74A /* WordsGridView.swift in Sources */,
 				87529F46250DFF930056C74A /* NumberPickerView.swift in Sources */,
-				8797A82F250E2130001DE255 /* Words.swift in Sources */,
+				8797A82F250E2130001DE255 /* SpecialWords.swift in Sources */,
 				87529F42250DFBCA0056C74A /* Color.swift in Sources */,
+				8797A87525109D87001DE255 /* SpecialWord.swift in Sources */,
 				8797A82A250E20C5001DE255 /* SettingsViewModel.swift in Sources */,
 				87529F44250DFD490056C74A /* ChecBoxView.swift in Sources */,
+				8797A867250FCB41001DE255 /* View.swift in Sources */,
 				87529F3F250DFB5F0056C74A /* SectionView.swift in Sources */,
 				87529F4A250DFFB70056C74A /* ClosedRange.swift in Sources */,
 				87529EFA250B90C40056C74A /* AppDelegate.swift in Sources */,

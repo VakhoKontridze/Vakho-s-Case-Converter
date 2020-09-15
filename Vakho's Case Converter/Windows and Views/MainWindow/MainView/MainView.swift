@@ -19,66 +19,81 @@ extension MainView {
         VStack(content: {
             general
         })
-            .frame(
-                minWidth: ViewModel.view.width,
-                idealWidth: ViewModel.view.width,
-                maxWidth: ViewModel.view.width,
-                
-                minHeight: ViewModel.view.height,
-                idealHeight: ViewModel.view.height,
-                maxHeight: ViewModel.view.height,
-                
-                alignment: .top
-            )
+            .frame(size: ViewModel.window, alignment: .top)
             .padding(10)
     }
     
     private var general: some View {
         SectionView(title: "General", content: {
-            CheckBoxView(isOn: self.$settings.capitalizeFirstAndLast, title: "Capitalize the first and last words")
+            CheckBoxView(
+                isOn: self.$settings.capitalizeFirstAndLast,
+                title: "Capitalize the first and last words"
+            )
                 .padding(.bottom, 7)
 
             HStack(spacing: 0, content: {
-                CheckBoxView(isOn: self.$settings.principalWords.capitalize, title: "Capitalize verbs, nouns, adjectives, adverbs, and pronouns of ")
+                CheckBoxView(
+                    isOn: self.$settings.principalWord.capitalize,
+                    title: "Capitalize verbs, nouns, adjectives, adverbs, and pronouns of "
+                )
                 
-                NumberPickerView(value: self.$settings.principalWords.length, range: self.settings.principalWords.range)
+                NumberPickerView(value: self.$settings.principalWord.length, range: self.settings.principalWord.range)
                     .padding(.horizontal, 5)
-                    .disabled(!self.settings.principalWords.capitalize)
+                    .disabled(!self.settings.principalWord.capitalize)
                 
                 Text(" letters or more")
-                    .onTapGesture(count: 1, perform: { self.settings.principalWords.capitalize.toggle() })
+                    .onTapGesture(count: 1, perform: { self.settings.principalWord.capitalize.toggle() })
             })
             
-            HStack(spacing: 0, content: {
-                CheckBoxView(isOn: self.$settings.specialWords.capitalize, title: "Capitalize articles, conjunctions, and pre-/post-positions of ")
+            VStack(alignment: .leading, spacing: 5, content: {
+                HStack(spacing: 0, content: {
+                    CheckBoxView(
+                        isOn: self.$settings.specialWord.capitalize.onChange(self.settings.syncSpecialWord),
+                        title: "Capitalize articles, prepositions, and conjunctions of "
+                    )
+                    
+                    NumberPickerView(value: self.$settings.specialWord.length, range: self.settings.specialWord.range)
+                        .padding(.horizontal, 5)
+                        .disabled(!self.settings.specialWord.capitalize)
+                    
+                    Text(" letters or more")
+                        .onTapGesture(count: 1, perform: { self.settings.specialWord.capitalize.toggle() })
+                    
+                    Spacer()
+                    
+                    Button(action: { WordsFactory.shared.createWindow() }, label: { Text("Words") })
+                })
                 
-                NumberPickerView(value: self.$settings.specialWords.length, range: self.settings.specialWords.range)
-                    .padding(.horizontal, 5)
-                    .disabled(!self.settings.specialWords.capitalize)
-                
-                Text(" letters or more")
-                    .onTapGesture(count: 1, perform: { self.settings.specialWords.capitalize.toggle() })
+                Group(content: {
+                    ForEach(SpecialWord.allCases, content: { specialWord in
+                        CheckBoxView(
+                            isOn: Binding<Bool>(
+                                get: {
+                                    self.settings.specialWords.contains(specialWord)
+                                },
+                                set: { isIncluded in
+                                    switch isIncluded {
+                                    case false: self.settings.specialWords.remove(specialWord)
+                                    case true: self.settings.specialWords.insert(specialWord)
+                                    }
+                                }
+                            )
+                                .onChange(self.settings.syncSpecialWords)
+                            ,
+                            
+                            specialWord: specialWord
+                        )
+                    })
+                })
+                    .padding(.leading, 23)
             })
             
             CheckBoxView(isOn: self.$settings.fixSpacing, title: "Fix multiple spacing")
-            
-            Button(action: { WordsFactory.shared.createWindow(title: "Words") }, label: { Text("???") })
+                .padding(.top, 5)
         })
     }
-    
-    
-    
-//    private var articlesConjunctionsPrePositions: some View {
-//        VStack(content: {
-//            SectionView(title: "Articles", content: {
-//                WordsGridView(words: SpecialWords.articles, columns: 5)
-//            })
-//
-//            SectionView(title: "Prepositions", content: {
-//                WordsGridView(words: SpecialWords.Prepositions.Single.standard, columns: 5)
-//            })
-//        })
-//    }
+//    Capitalize both words of hyphenated compounds
+//    Capitalize the first word after a colon or dash
 }
 
 // MARK:- Preview

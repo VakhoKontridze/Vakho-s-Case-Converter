@@ -31,9 +31,9 @@ struct CheckBoxView: View {
         self.init(isOn: isOn, title: title, details: nil)
     }
 
-//    init(isOn: Binding<Bool>, characters: CharacterSet) {
-//        self.init(isOn: isOn, title: characters.title, details: characters.details)
-//    }
+    init(isOn: Binding<Bool>, specialWord: SpecialWord) {
+        self.init(isOn: isOn, title: specialWord.title, details: specialWord.details)
+    }
 }
 
 // MARK:- Body
@@ -57,8 +57,8 @@ extension CheckBoxView {
 }
 
 // MARK:- Preview
-//struct CheckBoxView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CheckBoxView(isOn: .constant(true), characters: .lowercase)
-//    }
-//}
+struct CheckBoxView_Previews: PreviewProvider {
+    static var previews: some View {
+        CheckBoxView(isOn: .constant(true), specialWord: .standard)
+    }
+}

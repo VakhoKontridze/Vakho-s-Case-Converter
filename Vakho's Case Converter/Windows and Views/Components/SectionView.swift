@@ -49,13 +49,13 @@ extension SectionView {
 }
 
 // MARK:- Preview
-//struct SectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SectionView(title: "Title", content: {
-//            ForEach(CharacterSet.allCases, content: { characters in
-//                CheckBoxView(isOn: .constant(true), characters: characters)
-//            })
-//        })
-//            .frame(width: 300, height: 300)
-//    }
-//}
+struct SectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        SectionView(title: "Special Words", content: {
+            ForEach(SpecialWord.allCases, content: { specialWord in
+                CheckBoxView(isOn: .constant(true), specialWord: specialWord)
+            })
+        })
+            .frame(width: 300, height: 300)
+    }
+}

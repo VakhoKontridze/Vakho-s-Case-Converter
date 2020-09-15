@@ -1,5 +1,5 @@
 //
-//  Words.swift
+//  SpecialWords.swift
 //  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/13/20.
@@ -8,18 +8,20 @@
 
 import Foundation
 
-// MARK:- Words
-final class Words {
+// MARK:- SpecialWords
+final class SpecialWords {
     // MARK: Properties
-    static let shared: Words = .init()
+    static let shared: SpecialWords = .init()
     
     let articles: [String]
     let prepositions: Prepositions
     let conjunctions: Conjunctions
     
+    lazy private(set) var allWords: Set<String> = retriveAllWords()
+    
     // MARK: Initializers
     private init() {
-        let dictionary: [String: Any] = Words.decode()
+        let dictionary: [String: Any] = SpecialWords.decode()
 
         articles = dictionary["Articles"] as? [String] ?? []
         prepositions = .init(from: dictionary["Prepositions"] as? [String: Any] ?? [:])
@@ -28,7 +30,7 @@ final class Words {
 }
 
 // MARK:- Prepositions
-extension Words {
+extension SpecialWords {
     struct Prepositions {
         // MARK: Properties
         let prototypical: Prototypical
@@ -46,7 +48,7 @@ extension Words {
     }
 }
 
-extension Words.Prepositions {
+extension SpecialWords.Prepositions {
     // MARK:- Prototypical Prepositions
     struct Prototypical {
         // MARK: Properties
@@ -111,7 +113,7 @@ extension Words.Prepositions {
 }
 
 // MARK:- Conjunctions
-extension Words {
+extension SpecialWords {
     struct Conjunctions {
         // MARK: Properties
         let coordinating: [String]
@@ -125,18 +127,18 @@ extension Words {
     }
 }
 
-extension Words.Conjunctions {
+extension SpecialWords.Conjunctions {
     // MARK:- Subordinating Conjunctions
     struct Subordinating {
-        let one: StandardAndContextual
-        let two: [String]
-        let three: [String]
+        let single: StandardAndContextual
+        let double: [String]
+        let triple: [String]
         
         // MARK: Initializers
         init(from dictionary: [String: Any]) {
-            one = .init(from: dictionary["1"] as? [String: Any] ?? [:])
-            two = dictionary["2"] as? [String] ?? []
-            three = dictionary["3"] as? [String] ?? []
+            single = .init(from: dictionary["1"] as? [String: Any] ?? [:])
+            double = dictionary["2"] as? [String] ?? []
+            triple = dictionary["3"] as? [String] ?? []
         }
     }
 }
@@ -167,10 +169,10 @@ struct StandardAndContextual {
 }
 
 // MARK:- Decode
-private extension Words {
+private extension SpecialWords {
     static func decode() -> [String: Any] {
         guard
-            let url = Bundle.main.url(forResource: "Words", withExtension: "json"),
+            let url = Bundle.main.url(forResource: "SpecialWords", withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let json = try? JSONSerialization.jsonObject(with: data, options: []),
             let dictionary = json as? [String: Any]
@@ -182,8 +184,8 @@ private extension Words {
     }
 }
 
-// MARK:- Retrieve
-extension Words {
+// MARK:- All Words
+private extension SpecialWords {
     func retriveAllWords() -> Set<String> {
         var words: Set<String> = []
 
@@ -210,10 +212,10 @@ extension Words {
         words.insert(prepositions.complex.misc)
 
         words.insert(conjunctions.coordinating)
-        words.insert(conjunctions.subordinating.one.standard)
-        words.insert(conjunctions.subordinating.one.contextual)
-        words.insert(conjunctions.subordinating.two)
-        words.insert(conjunctions.subordinating.three)
+        words.insert(conjunctions.subordinating.single.standard)
+        words.insert(conjunctions.subordinating.single.contextual)
+        words.insert(conjunctions.subordinating.double)
+        words.insert(conjunctions.subordinating.triple)
 
         return words
     }

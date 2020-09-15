@@ -9,67 +9,40 @@
 import SwiftUI
 
 // MARK:- Main Factory
-final class MainFactory: NSObject {
+final class MainFactory: WindowFactory, WindowFactoryable {
     // MARK: Properties
     static let shared: MainFactory = .init()
     
-    private var window: NSWindow!
-    private var controller: NSWindowController!
-
-    // MARK: Initializers
+    let rootView: some View = MainView()
+    
+    let rect: WindowRectParameters = .init(
+        savesOrigin: false,
+        savesSize: false, defaultSize: MainView.ViewModel.window
+    )
+    
+    let titleBar: WindowFactoryTitleBarSettings = .init(
+        title: AppDelegate.appName,
+        isTransparent: true,
+        titleButtons: [.close]
+    )
+    
+    // MARK: Initialize
     private override init() {
         super.init()
     }
 }
 
-// MARK:- Window
+// MARK:- Create
 extension MainFactory {
     func createWindow() {
-        // If window exists, brings it to front
-        guard window == nil else {
-            window.makeKeyAndOrderFront(nil)
-            return
-        }
-
-        // Creates window
-        window = .init(
-            contentRect: .init(origin: .zero, size: MainView.ViewModel.window),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable],
-            backing: .buffered,
-            defer: false
-        )
-
-        window.center()
-        window.makeKeyAndOrderFront(nil)
-
-        // Customizes title bar
-        window.titlebarAppearsTransparent = true
-
-        window.title = AppDelegate.appName
-
-        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        window.standardWindowButton(.miniaturizeButton)?.isEnabled = false
-
-        window.standardWindowButton(.zoomButton)?.isHidden = true
-        window.standardWindowButton(.zoomButton)?.isEnabled = false
-        
-        // Creates view
-        window.contentView = NSHostingView(rootView: MainView())
-        
-        // Creates window controller
-        controller = .init(window: window)
-        
-        // Sets delegate
-        window.delegate = self
+        super.createWindow(sender: self)
     }
 }
 
-// MARK:- Delegate
+// MARK:- Window Delegate
 extension MainFactory: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
-        guard notification.object as? NSWindow == window else { return }
-        
-        self.window = nil
-        self.controller = nil
+        super.saveFrame(notification)
+        AppDelegate.terminateApp()
     }
 }

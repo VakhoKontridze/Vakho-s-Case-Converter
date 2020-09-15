@@ -12,8 +12,28 @@ import Foundation
 final class SettingsViewModel: ObservableObject {
     @Published var capitalizeFirstAndLast: Bool = true
     
-    @Published var principalWords: WordGroup = .init(capitalize: true, length: 4, range: 4...10)
-    @Published var specialWords: WordGroup = .init(capitalize: true, length: 4, range: 1...10)
+    @Published var principalWord: WordGroup = .init(capitalize: true, length: 4, range: 4...10)
+    
+    @Published var specialWord: WordGroup = .init(capitalize: true, length: 4, range: 1...10)
+    @Published var specialWords: Set<SpecialWord> = SpecialWord.defaultValue
     
     @Published var fixSpacing: Bool = true
+}
+
+
+// MARK:- Sync
+extension SettingsViewModel {
+    func syncSpecialWord() {
+        switch specialWord.capitalize {
+        case false: specialWords = []
+        case true: specialWords = SpecialWord.defaultValue
+        }
+    }
+    
+    func syncSpecialWords() {
+        switch specialWords.isEmpty {
+        case false: specialWord.capitalize = true
+        case true: specialWord.capitalize = false
+        }
+    }
 }
