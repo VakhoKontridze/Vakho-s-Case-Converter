@@ -43,6 +43,33 @@ extension CaseConverter {
     }
 }
 
+// MARK:- Sentence Case
+extension CaseConverter {
+    func toSentenceCase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
+        
+        var previousWasFullStop: Bool = false
+        var previousWasWhiteSpace: Bool = false
+        for (i, char) in phrase.enumerated() {
+            if char == "." {
+                previousWasFullStop = true
+            } else if previousWasFullStop && char.isWhitespace {
+                previousWasWhiteSpace = true
+            } else if previousWasWhiteSpace {
+                previousWasFullStop = false
+                previousWasWhiteSpace = false
+                phrase.replacing(at: i, with: char.uppercased())
+            } else {
+                phrase.replacing(at: i, with: char.lowercased())
+            }
+        }
+        
+        if fixSpacing { phrase.fixSpacing() }
+        
+        return phrase
+    }
+}
+
 // MARK:- Capital Case
 extension CaseConverter {
     func toCapitalCase(_ phrase: String, fixSpacing: Bool) -> String {
