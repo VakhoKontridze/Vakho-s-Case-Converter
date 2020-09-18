@@ -1,5 +1,5 @@
 //
-//  Conversion.swift
+//  ConversionCase.swift
 //  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/15/20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-// MARK:- Conversion
-enum Conversion: Int, CaseIterable, Identifiable {
+// MARK:- ConversionCase
+enum ConversionCase: Int, CaseIterable, Identifiable {
     case lower, upper
     case title, sentence, capital
     case alternate, toggle

@@ -12,7 +12,7 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject private var settings: SettingsViewModel = .init()
     
-    @State private var title: String = ""
+    @State private var title: String = "How to make TextView in SwiftUI for macOS"
 }
 
 // MARK:- Body
@@ -20,7 +20,7 @@ extension MainView {
     var body: some View {
         VStack(spacing: 10, content: {
             convert
-            if settings.conversion == .title {
+            if settings.conversionCase == .title {
                 firstAndLast
                 principals
                 specialWords
@@ -39,10 +39,10 @@ extension MainView {
                 
                 HStack(spacing: 10, content: {
                     Picker(
-                        selection: self.$settings.conversion,
+                        selection: self.$settings.conversionCase,
                         label: EmptyView(),
                         content: {
-                            ForEach(Conversion.allCases, id: \.self, content: { conversion in
+                            ForEach(ConversionCase.allCases, id: \.self, content: { conversion in
                                 Text(conversion.title)
                             })
                         }
@@ -51,7 +51,7 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button(action: {}, label: { Text("Convert") })
+                    Button(action: { self.convertCase() }, label: { Text("Convert") })
                         .disabled(self.title.isEmpty)
                     
                     Spacer()
@@ -164,6 +164,39 @@ extension MainView {
                 title: "Fix multiple spacing"
             )
         })
+    }
+}
+
+// MARK:- Convert
+private extension MainView {
+    func convertCase() {
+        title = {
+            switch settings.conversionCase {
+            case .lower: return CaseConverter.shared.toLowercase(title, fixSpacing: settings.fixSpacing)
+            case .upper: return CaseConverter.shared.toUppercase(title, fixSpacing: settings.fixSpacing)
+            case .title: preconditionFailure()
+            case .sentence: preconditionFailure()
+            case .capital: preconditionFailure()
+            case .alternate: return CaseConverter.shared.toAlternateCase(title, fixSpacing: settings.fixSpacing)
+            case .toggle: return CaseConverter.shared.toToggleCase(title, fixSpacing: settings.fixSpacing)
+            }
+        }()
+    }
+}
+
+// MARK:- View Model
+extension MainView {
+    struct ViewModel {
+        // MARK: Properties
+        static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
+        static let titleBar: CGSize = .init(width: -1, height: 22)
+        
+        static let view: CGSize = .init(width: 670, height: 745)
+        
+        static let picker: CGSize = .init(width: 135, height: -1)
+
+        // MARK: Initializers
+        private init() {}
     }
 }
 

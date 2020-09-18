@@ -10,7 +10,7 @@ import Foundation
 
 // MARK:- Settings View Model
 final class SettingsViewModel: ObservableObject {
-    @Published var conversion: Conversion = .title
+    @Published var conversionCase: ConversionCase = .title
     
     @Published var capitalizeFirstAndLast: Bool = true
     
@@ -24,7 +24,6 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var fixSpacing: Bool = true
 }
-
 
 // MARK:- Sync
 extension SettingsViewModel {

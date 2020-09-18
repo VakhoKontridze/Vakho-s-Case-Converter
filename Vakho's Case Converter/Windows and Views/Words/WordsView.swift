@@ -87,6 +87,20 @@ extension WordsView {
     }
 }
 
+// MARK:- View Model
+extension WordsView {
+    struct ViewModel {
+        // MARK: Properties
+        static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
+        static let titleBar: CGSize = .init(width: -1, height: 22)
+        
+        static let view: CGSize = .init(width: 600, height: 600)
+        
+        // MARK: Initializers
+        private init() {}
+    }
+}
+
 // MARK:- Preview
 struct WordsView_Previews: PreviewProvider {
     static var previews: some View {
