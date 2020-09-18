@@ -19,58 +19,79 @@ final class CaseConverter {
 
 // MARK:- Lowercase
 extension CaseConverter {
-    func toLowercase(_ sentence: String, fixSpacing: Bool) -> String {
-        var sentence: String = sentence
+    func toLowercase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
         
-        sentence = sentence.lowercased()
+        phrase = phrase.lowercased()
         
-        if fixSpacing { sentence.fixSpacing() }
+        if fixSpacing { phrase.fixSpacing() }
         
-        return sentence
+        return phrase
     }
 }
 
 // MARK:- Uppercase
 extension CaseConverter {
-    func toUppercase(_ sentence: String, fixSpacing: Bool) -> String {
-        var sentence: String = sentence
+    func toUppercase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
         
-        sentence = sentence.uppercased()
+        phrase = phrase.uppercased()
         
-        if fixSpacing { sentence.fixSpacing() }
+        if fixSpacing { phrase.fixSpacing() }
         
-        return sentence
+        return phrase
+    }
+}
+
+// MARK:- Capital Case
+extension CaseConverter {
+    func toCapitalCase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
+        
+        var previousWasWhiteSpace: Bool = false
+        for (i, char) in phrase.enumerated() {
+            if char.isWhitespace {
+                previousWasWhiteSpace = true
+            } else if previousWasWhiteSpace {
+                previousWasWhiteSpace = false
+                phrase.replacing(at: i, with: char.uppercased())
+            }
+        }
+        
+        if fixSpacing { phrase.fixSpacing() }
+        
+        return phrase
     }
 }
 
 // MARK:- Alterante Case
 extension CaseConverter {
-    func toAlternateCase(_ sentence: String, fixSpacing: Bool) -> String {
-        var sentence: String = sentence
+    func toAlternateCase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
         
-        for (i, char) in sentence.enumerated() {
+        for (i, char) in phrase.enumerated() {
             let shouldBeLowercased: Bool = i % 2 == 0
-            sentence.replacing(at: i, with: shouldBeLowercased ? char.lowercased() : char.uppercased())
+            phrase.replacing(at: i, with: shouldBeLowercased ? char.lowercased() : char.uppercased())
         }
         
-        if fixSpacing { sentence.fixSpacing() }
+        if fixSpacing { phrase.fixSpacing() }
         
-        return sentence
+        return phrase
     }
 }
 
 // MARK:- Toggle Case
 extension CaseConverter {
-    func toToggleCase(_ sentence: String, fixSpacing: Bool) -> String {
-        var sentence: String = sentence
+    func toToggleCase(_ phrase: String, fixSpacing: Bool) -> String {
+        var phrase: String = phrase
         
-        for (i, char) in sentence.enumerated() {
-            sentence.replacing(at: i, with: char.isLowercase ? char.uppercased() : char.lowercased())
+        for (i, char) in phrase.enumerated() {
+            phrase.replacing(at: i, with: char.isLowercase ? char.uppercased() : char.lowercased())
         }
         
-        if fixSpacing { sentence.fixSpacing() }
+        if fixSpacing { phrase.fixSpacing() }
         
-        return sentence
+        return phrase
     }
 }
 

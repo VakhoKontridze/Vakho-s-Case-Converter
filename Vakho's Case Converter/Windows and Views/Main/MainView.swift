@@ -176,7 +176,7 @@ private extension MainView {
             case .upper: return CaseConverter.shared.toUppercase(title, fixSpacing: settings.fixSpacing)
             case .title: preconditionFailure()
             case .sentence: preconditionFailure()
-            case .capital: preconditionFailure()
+            case .capital: return CaseConverter.shared.toCapitalCase(title, fixSpacing: settings.fixSpacing)
             case .alternate: return CaseConverter.shared.toAlternateCase(title, fixSpacing: settings.fixSpacing)
             case .toggle: return CaseConverter.shared.toToggleCase(title, fixSpacing: settings.fixSpacing)
             }
