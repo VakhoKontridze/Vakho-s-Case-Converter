@@ -14,7 +14,7 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var conversionCase: ConversionCase = .title
     
-    @Published var principalWords: WordGroup = .init(ticked: true, length: 4, range: 4...10)
+    @Published var principalWords: WordGroup = .init(ticked: true, length: 4, range: 1...10)
     
     @Published var specialWords: WordGroup = .init(ticked: true, length: 3, range: 1...21)
     @Published var specialWordsPool: Set<SpecialWord> = SpecialWord.defaultValue
