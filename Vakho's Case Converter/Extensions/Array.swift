@@ -9,9 +9,13 @@
 import Foundation
 
 extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
+    func element(at index: Int) -> Element? {
+        guard index >= 0 && index < count else { return nil }
+        return self[index]
+    }
+}
+extension String {
+    func element(at index: Int) -> Character? {
+        Array(self).element(at: index)
     }
 }

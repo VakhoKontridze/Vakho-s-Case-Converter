@@ -1,5 +1,5 @@
 //
-//  MainFactory.swift
+//  MainWindow.swift
 //  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/12/20.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-// MARK:- Main Factory
-final class MainFactory: WindowFactory, WindowFactoryable {
+// MARK:- Main Window
+final class MainWindow: WindowFactory, WindowFactoryable {
     // MARK: Properties
-    static let shared: MainFactory = .init()
+    static let shared: MainWindow = .init()
     
     let rootView: some View = MainView()
     
@@ -33,14 +33,14 @@ final class MainFactory: WindowFactory, WindowFactoryable {
 }
 
 // MARK:- Create
-extension MainFactory {
+extension MainWindow {
     func createWindow() {
         super.createWindow(sender: self)
     }
 }
 
 // MARK:- Window Delegate
-extension MainFactory: NSWindowDelegate {
+extension MainWindow: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         super.saveFrame(notification)
         AppDelegate.terminateApp()

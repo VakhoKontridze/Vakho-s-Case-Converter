@@ -12,32 +12,47 @@ import Foundation
 final class SettingsViewModel: ObservableObject {
     @Published var conversionCase: ConversionCase = .title
     
-    @Published var capitalizeFirstAndLast: Bool = true
+    @Published var principalWords: WordGroup = .init(ticked: true, length: 4, range: 4...10)
     
-    @Published var principalWord: WordGroup = .init(ticked: true, length: 4, range: 4...10)
+    @Published var specialWords: WordGroup = .init(ticked: true, length: 3, range: 1...21)
+    @Published var specialWordsPool: Set<SpecialWord> = SpecialWord.defaultValue
     
-    @Published var specialWord: WordGroup = .init(ticked: true, length: 3, range: 1...10)
-    @Published var specialWords: Set<SpecialWord> = SpecialWord.defaultValue
-    
-    @Published var capitalizeDelimeteredCompounds: Bool = true
-    @Published var capitalizeHyphenatedCompounds: Bool = true
-    
-    @Published var fixSpacing: Bool = true
+    @Published var capitalizeDelimetered: Bool = true
+}
+
+// MARK:- Title Case Settings
+extension SettingsViewModel {
+    var asTitleCaseSettings: TitleCaseSettings {
+        .init(
+            principalWords: principalWords,
+            specialWords: specialWords,
+            specialWordsPool: specialWordsPool,
+            capitalizeDelimetered: capitalizeDelimetered
+        )
+    }
+    struct TitleCaseSettings {
+        var principalWords: WordGroup
+
+        var specialWords: WordGroup
+        var specialWordsPool: Set<SpecialWord>
+
+        var capitalizeDelimetered: Bool
+    }
 }
 
 // MARK:- Sync
 extension SettingsViewModel {
     func syncSpecialWord() {
-        switch specialWord.ticked {
-        case false: specialWords = []
-        case true: specialWords = SpecialWord.defaultValue
+        switch specialWords.ticked {
+        case false: specialWordsPool = []
+        case true: specialWordsPool = SpecialWord.defaultValue
         }
     }
     
     func syncSpecialWords() {
-        switch specialWords.isEmpty {
-        case false: specialWord.ticked = true
-        case true: specialWord.ticked = false
+        switch specialWordsPool.isEmpty {
+        case false: specialWords.ticked = true
+        case true: specialWords.ticked = false
         }
     }
 }

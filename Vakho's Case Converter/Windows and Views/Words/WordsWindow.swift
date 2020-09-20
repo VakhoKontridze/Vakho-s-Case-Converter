@@ -1,5 +1,5 @@
 //
-//  WordsFactory.swift
+//  WordsWindow.swift
 //  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/13/20.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-// MARK:- Words Factory
-final class WordsFactory: WindowFactory, WindowFactoryable {
+// MARK:- Words Widow
+final class WordsWindow: WindowFactory, WindowFactoryable {
     // MARK: Properties
-    static let shared: WordsFactory = .init()
+    static let shared: WordsWindow = .init()
     
     let rootView: some View = WordsView()
     
@@ -32,14 +32,14 @@ final class WordsFactory: WindowFactory, WindowFactoryable {
 }
 
 // MARK:- Create
-extension WordsFactory {
+extension WordsWindow {
     func createWindow() {
         super.createWindow(sender: self)
     }
 }
 
 // MARK:- Window Delegate
-extension WordsFactory: NSWindowDelegate {
+extension WordsWindow: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         super.saveFrame(notification)
     }

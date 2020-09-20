@@ -221,6 +221,51 @@ private extension SpecialWords {
     }
 }
 
+// MARK:- Retrieve
+extension SpecialWords {
+    func retrieveWords(length: Int, pool: Set<SpecialWord>) -> [Int: [String]] {
+        let words: [String] = {
+            var words: [String] = []
+
+            if pool.contains(.standard) { words += articles }
+
+            if pool.contains(.standard) { words += prepositions.prototypical.standard }
+            if pool.contains(.alternative) { words += prepositions.prototypical.alternative }
+            if pool.contains(.contextual) { words += prepositions.prototypical.contextual.standard }
+            if pool.contains(.contextual) && pool.contains(.alternative) { words += prepositions.prototypical.contextual.alternative }
+
+            if pool.contains(.standard) { words += prepositions.intransitive.standard }
+            if pool.contains(.alternative) { words += prepositions.intransitive.alternative }
+            if pool.contains(.contextual) { words += prepositions.intransitive.contextual.standard }
+            if pool.contains(.contextual) && pool.contains(.alternative) { words += prepositions.intransitive.contextual.alternative }
+
+            if pool.contains(.standard) { words += prepositions.postpositions.standard }
+            if pool.contains(.alternative) { words += prepositions.postpositions.alternative }
+            if pool.contains(.contextual) { words += prepositions.postpositions.contextual }
+
+            if pool.contains(.double) { words += prepositions.complex.prepositionPreposition.standard }
+            if pool.contains(.double) && pool.contains(.alternative) { words += prepositions.complex.prepositionPreposition.alternative }
+            if pool.contains(.triple) { words += prepositions.complex.prepositionNounPreposition }
+            if pool.contains(.quadruple) { words += prepositions.complex.prepositionArticleNounPreposition }
+            if pool.contains(.double) { words += prepositions.complex.misc }
+
+            if pool.contains(.standard) { words += conjunctions.coordinating }
+            if pool.contains(.standard) { words += conjunctions.subordinating.single.standard }
+            if pool.contains(.contextual) { words += conjunctions.subordinating.single.contextual }
+            if pool.contains(.double) { words += conjunctions.subordinating.double }
+            if pool.contains(.triple) { words += conjunctions.subordinating.triple }
+
+            words.sort()
+            
+            words = words.filter { $0.count <= length }
+            
+            return words
+        }()
+        
+        return .init(grouping: words, by: { $0.components(separatedBy: .whitespaces).count })
+    }
+}
+
 // MARK:- Set Insert
 private extension Set {
     mutating func insert(_ array: Array<Element>) {
