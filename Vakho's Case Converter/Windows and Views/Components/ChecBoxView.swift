@@ -1,6 +1,6 @@
 //
 //  CheckBoxView.swift
-//  Vakho's Password Generator
+//  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 8/29/20.
 //  Copyright © 2020 Vakhtang Kontridze. All rights reserved.

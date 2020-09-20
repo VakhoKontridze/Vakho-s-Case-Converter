@@ -66,7 +66,7 @@ extension AppDelegate {
     func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? { managedObjectContext.undoManager }
 }
 
-// MARK:- Exit
+// MARK:- Terminate
 extension AppDelegate {
     static func terminateApp() {
         exit(0)

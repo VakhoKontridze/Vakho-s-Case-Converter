@@ -1,6 +1,6 @@
 //
 //  Binding.swift
-//  Vakho's Password Generator
+//  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/1/20.
 //  Copyright © 2020 Vakhtang Kontridze. All rights reserved.
