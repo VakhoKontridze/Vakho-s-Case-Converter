@@ -10,6 +10,8 @@ import Foundation
 
 // MARK:- Settings View Model
 final class SettingsViewModel: ObservableObject {
+    @Published var title: String = ""
+    
     @Published var conversionCase: ConversionCase = .title
     
     @Published var principalWords: WordGroup = .init(ticked: true, length: 4, range: 4...10)
@@ -18,6 +20,23 @@ final class SettingsViewModel: ObservableObject {
     @Published var specialWordsPool: Set<SpecialWord> = SpecialWord.defaultValue
     
     @Published var capitalizeDelimetered: Bool = true
+}
+
+// MARK:- Convert
+extension SettingsViewModel {
+    func convert() {
+        title = {
+            switch conversionCase {
+            case .lower: return CaseConverter.toLowercase(title)
+            case .upper: return CaseConverter.toUppercase(title)
+            case .title: return CaseConverter.toTitleCase(title, settings: asTitleCaseSettings)
+            case .sentence: return CaseConverter.toSentenceCase(title)
+            case .capital: return CaseConverter.toCapitalCase(title)
+            case .alternate: return CaseConverter.toAlternateCase(title)
+            case .toggle: return CaseConverter.toToggleCase(title)
+            }
+        }()
+    }
 }
 
 // MARK:- Title Case Settings

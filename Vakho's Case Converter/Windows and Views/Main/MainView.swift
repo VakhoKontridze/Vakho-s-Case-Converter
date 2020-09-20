@@ -10,9 +10,7 @@ import SwiftUI
 
 // MARK:- Main View
 struct MainView: View {
-    @ObservedObject private var settings: SettingsViewModel = .init()
-    
-    @State private var title: String = "How to m(a)ke Text-View in Sw(i)zz - zftUI for macOS. How to make Te(xt)View in SwiftUI for ma!cOS."
+    @EnvironmentObject private var settings: SettingsViewModel
 }
 
 // MARK:- Body
@@ -33,7 +31,7 @@ extension MainView {
     private var convert: some View {
         SectionView(content: {
             VStack(spacing: 10, content: {
-                TextField("", text: self.$title)
+                TextField("", text: self.$settings.title)
                 
                 HStack(spacing: 10, content: {
                     Picker(
@@ -49,12 +47,12 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button(action: { self.convertCase() }, label: { Text("Convert") })
-                        .disabled(self.title.isEmpty)
+                    Button(action: { self.settings.convert() }, label: { Text("Convert") })
+                        .disabled(self.settings.title.isEmpty)
                     
                     Spacer()
                     
-                    Button(action: { self.title = "" }, label: { Text("Clear") })
+                    Button(action: { self.settings.title = "" }, label: { Text("Clear") })
                         .frame(width: ViewModel.picker.width, alignment: .trailing)
                 })
             })
@@ -142,23 +140,6 @@ extension MainView {
     }
 }
 
-// MARK:- Convert
-private extension MainView {
-    func convertCase() {
-        title = {
-            switch settings.conversionCase {
-            case .lower: return CaseConverter.toLowercase(title)
-            case .upper: return CaseConverter.toUppercase(title)
-            case .title: return CaseConverter.toTitleCase(title, settings: settings.asTitleCaseSettings)
-            case .sentence: return CaseConverter.toSentenceCase(title)
-            case .capital: return CaseConverter.toCapitalCase(title)
-            case .alternate: return CaseConverter.toAlternateCase(title)
-            case .toggle: return CaseConverter.toToggleCase(title)
-            }
-        }()
-    }
-}
-
 // MARK:- View Model
 extension MainView {
     struct ViewModel {
@@ -179,5 +160,6 @@ extension MainView {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(SettingsViewModel())
     }
 }

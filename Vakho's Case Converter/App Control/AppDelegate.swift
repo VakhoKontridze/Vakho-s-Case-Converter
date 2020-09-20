@@ -9,7 +9,10 @@
 import Cocoa
 import SwiftUI
 
+// MARK:- App Delegate
 /*@NSApplicationMain*/ final class AppDelegate: NSObject {
+    let settings: SettingsViewModel = .init()
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container: NSPersistentContainer = .init(name: "Vakho_s_Case_Converter")
 
@@ -28,7 +31,7 @@ import SwiftUI
     var managedObjectContext: NSManagedObjectContext { persistentContainer.viewContext }
 }
 
-// MARK:- App Delegate
+// MARK:- Delegate
 extension AppDelegate: NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         MainWindow.shared.createWindow()

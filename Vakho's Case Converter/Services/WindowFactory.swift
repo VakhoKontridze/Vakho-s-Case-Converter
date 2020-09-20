@@ -14,6 +14,8 @@ class WindowFactory: NSObject {
     private var windowController: NSWindowController!
     
     private var rect: WindowRect!
+    
+    var windowID: NSUserInterfaceItemIdentifier? { window?.identifier }
 }
 
 // MARK:- Lifecycle Methods

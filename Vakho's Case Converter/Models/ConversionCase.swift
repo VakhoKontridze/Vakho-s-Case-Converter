@@ -28,3 +28,18 @@ enum ConversionCase: Int, CaseIterable, Identifiable {
         }
     }
 }
+
+// MARK:- Next Case
+extension ConversionCase {
+    mutating func nextCase() {
+        switch self {
+        case .lower: self = .upper
+        case .upper: self = .title
+        case .title: self = .sentence
+        case .sentence: self = .capital
+        case .capital: self = .alternate
+        case .alternate: self = .toggle
+        case .toggle: self = .lower
+        }
+    }
+}
