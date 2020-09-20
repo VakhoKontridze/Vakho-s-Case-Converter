@@ -1,4 +1,4 @@
-# Vakho's Case Generator
+# Vakho's Case Converter
 
 ## Table of contents
 - [Description](#description)
@@ -10,7 +10,7 @@
 - [Copyright](#copyright)
 
 ## Description
-Vakho's Case Generator is an open-source utility app for macOS. You can use the app to convert phrase to standard cases, as well use use highly customizable title case.
+Vakho's Case Converter is an open-source utility app for macOS. You can use the app to convert phrase to standard cases, as well use use highly customizable title case.
 
 #### General Features:
 - Standard cases—lower, upper, title, sentence, capital, alternate, and toggle
