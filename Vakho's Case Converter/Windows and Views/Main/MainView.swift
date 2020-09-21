@@ -47,12 +47,12 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button(action: { self.settings.convert() }, label: { Text("Convert") })
+                    Button("Convert", action: { self.settings.convert() })
                         .disabled(self.settings.title.isEmpty)
                     
                     Spacer()
                     
-                    Button(action: { self.settings.title = "" }, label: { Text("Clear") })
+                    Button("Clear", action: { self.settings.title = "" })
                         .frame(width: ViewModel.picker.width, alignment: .trailing)
                 })
             })

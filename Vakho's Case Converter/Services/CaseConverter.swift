@@ -81,17 +81,17 @@ extension CaseConverter {
                 for i in 0..<tokens.count {
                     var wordsLeftToCheck = length
                     let words: [String] = specialWord.components(separatedBy: .whitespaces)
-
+                    
                     while wordsLeftToCheck > 0 {
                         let indexInToken: Int = i + (length - wordsLeftToCheck) * 2
                         let indexInWords: Int = length - wordsLeftToCheck
                         guard words.element(at: indexInWords) == tokens.element(at: indexInToken)?.lowercased() else { break }
 
                         wordsLeftToCheck -= 1
-
+                        
                         if wordsLeftToCheck == 0 {
                             (i...i+length)
-                                .filter { $0 >= 0 }
+                                .filter { (0..<tokens.count).contains($0) }
                                 .forEach { tokens[$0] = tokens[$0].lowercased() }
                         }
                     }
@@ -158,12 +158,15 @@ extension CaseConverter {
         
         for (i, token) in tokens.enumerated() {
             var subtokens: [String] = Tokenizer.tokenizePseudoWords(token)
-            guard subtokens.count >= 3 else { continue }
             
-            let first: String = subtokens.removeFirst().capitalized
-            let last: String = subtokens.removeLast().capitalized
-            
-            tokens[i] = first + subtokens.joined() + last
+            if subtokens.count >= 3 {
+                let first: String = subtokens.removeFirst().capitalized
+                let last: String = subtokens.removeLast().capitalized
+                
+                tokens[i] = first + subtokens.joined() + last
+            } else {
+                tokens[i] = tokens[i].capitalized
+            }
         }
         
         return tokens.joined()

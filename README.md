@@ -26,6 +26,9 @@ You can simply clone the project and build the app from XCode.
 ![Main](./img/Main.jpg)
 
 ## Version History
+Version 1.1(2) (2020 Sep 21)
+- Bug fixes and performance enhancements
+
 Version 1.0(1) (2020 Sep 20)
 - Standard cases
 - Title case
