@@ -13,7 +13,9 @@ final class WordsWindow: WindowFactory, WindowFactoryable {
     // MARK: Properties
     static let shared: WordsWindow = .init()
     
-    let rootView: some View = WordsView()
+    var rootView: some View {
+        WordsView()
+    }
     
     let rect: WindowRectParameters = .init(
         defaultSize: WordsView.ViewModel.window
