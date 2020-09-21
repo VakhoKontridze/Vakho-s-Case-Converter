@@ -46,6 +46,7 @@ extension CaseConverter {
         phrase = convertSpecialWords(phrase, specialWords: settings.specialWords, pool: settings.specialWordsPool)
         phrase = convertDelimitered(phrase, capitalizeDelimetered: settings.capitalizeDelimetered)
         phrase = convertFirstAndLast(phrase)
+        phrase = convertCustomWords(phrase, useCustomWords: settings.useCustomWords)
         
         return phrase
     }
@@ -151,6 +152,25 @@ extension CaseConverter {
         }
         
         return phrase
+    }
+    
+    private static func convertCustomWords(_ phrase: String, useCustomWords: Bool) -> String {
+        guard useCustomWords else { return phrase }
+        
+        var tokens: [String] = Tokenizer.tokenizeWords(phrase)
+        let customWords: Set<String> = Word.fetch().wordsSet
+        
+        for (i, token) in tokens.enumerated() {
+            guard token != " " else { continue } // No word is allowed to contain a whitespace, but just in case
+            
+            for customWord in customWords {
+                if token.lowercased() == customWord.lowercased() {
+                    tokens[i] = customWord
+                }
+            }
+        }
+        
+        return tokens.joined()
     }
     
     private static func convertFirstAndLast(_ phrase: String) -> String {

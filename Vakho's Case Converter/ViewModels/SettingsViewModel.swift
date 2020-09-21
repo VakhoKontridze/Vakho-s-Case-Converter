@@ -20,6 +20,8 @@ final class SettingsViewModel: ObservableObject {
     @Published var specialWordsPool: Set<SpecialWord> = SpecialWord.defaultValue
     
     @Published var capitalizeDelimetered: Bool = true
+    
+    @Published var useCustomWords: Bool = true
 }
 
 // MARK:- Convert
@@ -46,7 +48,8 @@ extension SettingsViewModel {
             principalWords: principalWords,
             specialWords: specialWords,
             specialWordsPool: specialWordsPool,
-            capitalizeDelimetered: capitalizeDelimetered
+            capitalizeDelimetered: capitalizeDelimetered,
+            useCustomWords: useCustomWords
         )
     }
     struct TitleCaseSettings {
@@ -56,6 +59,8 @@ extension SettingsViewModel {
         var specialWordsPool: Set<SpecialWord>
 
         var capitalizeDelimetered: Bool
+        
+        var useCustomWords: Bool
     }
 }
 

@@ -27,7 +27,7 @@ import Cocoa
         return container
     }()
     
-    var managedObjectContext: NSManagedObjectContext { persistentContainer.viewContext }
+    var moc: NSManagedObjectContext { persistentContainer.viewContext }
 }
 
 // MARK:- Delegate
@@ -53,16 +53,16 @@ extension AppDelegate {
 // MARK:- Core Data
 extension AppDelegate {
     @IBAction func saveAction(_ sender: AnyObject?) -> Void {
-        if managedObjectContext.hasChanges {
+        if moc.hasChanges {
             do {
-                try managedObjectContext.save()
+                try moc.save()
             } catch let error as NSError {
                 NSApp.presentError(error)
             }
         }
     }
 
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? { managedObjectContext.undoManager }
+    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? { moc.undoManager }
 }
 
 // MARK:- Terminate

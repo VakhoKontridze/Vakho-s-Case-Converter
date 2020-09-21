@@ -1,28 +1,30 @@
 //
-//  WordsWindow.swift
+//  CustomWordsWindow.swift
 //  Vakho's Case Converter
 //
-//  Created by Vakhtang Kontridze on 9/13/20.
+//  Created by Vakhtang Kontridze on 9/21/20.
 //  Copyright © 2020 Vakhtang Kontridze. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
-// MARK:- Words Widow
-final class WordsWindow: WindowFactory, WindowFactoryable {
+// MARK:- Special Words Widow
+final class CustomWordsWindow: WindowFactory, WindowFactoryable {
     // MARK: Properties
-    static let shared: WordsWindow = .init()
+    static let shared: CustomWordsWindow = .init()
     
     var rootView: some View {
-        WordsView()
+        CustomWordsView()
+            .environment(\.managedObjectContext, appDelegate.moc)
     }
     
     let rect: WindowRectParameters = .init(
-        defaultSize: WordsView.ViewModel.window
+        defaultSize: SpecialWordsView.ViewModel.Layout.window
     )
     
     let titleBar: WindowFactoryTitleBarSettings = .init(
-        title: "Articles, Prepositions, and Conjunctions",
+        title: "Custom Words",
         isTransparent: true,
         titleButtons: [.close, .miniaturize, .zoom]
     )
@@ -34,14 +36,14 @@ final class WordsWindow: WindowFactory, WindowFactoryable {
 }
 
 // MARK:- Create
-extension WordsWindow {
+extension CustomWordsWindow {
     func createWindow() {
         super.createWindow(sender: self)
     }
 }
 
 // MARK:- Window Delegate
-extension WordsWindow: NSWindowDelegate {
+extension CustomWordsWindow: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         super.saveFrame(notification)
     }

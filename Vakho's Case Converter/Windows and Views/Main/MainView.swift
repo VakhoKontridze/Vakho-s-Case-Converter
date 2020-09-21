@@ -22,10 +22,11 @@ extension MainView {
                 principals
                 specialWords
                 delimiters
+                customWords
             }
         })
             .padding(10)
-            .frame(size: ViewModel.view, alignment: .top)
+            .frame(size: ViewModel.Layout.view, alignment: .top)
     }
     
     private var convert: some View {
@@ -43,7 +44,7 @@ extension MainView {
                             })
                         }
                     )
-                        .frame(width: ViewModel.picker.width)
+                        .frame(width: ViewModel.Layout.picker.width)
                     
                     Spacer()
                     
@@ -53,7 +54,7 @@ extension MainView {
                     Spacer()
                     
                     Button("Clear", action: { self.settings.title = "" })
-                        .frame(width: ViewModel.picker.width, alignment: .trailing)
+                        .frame(width: ViewModel.Layout.picker.width, alignment: .trailing)
                 })
             })
         })
@@ -95,11 +96,7 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button(action: { WordsWindow.shared.createWindow() }, label: {
-                        Text("→")
-                            .padding(3)
-                            .background(Circle().foregroundColor(.secondary))
-                    })
+                    Button(action: { SpecialWordsWindow.shared.createWindow() }, label: { SymbolsBook.navigateToWindow })
                         .buttonStyle(PlainButtonStyle())
                 })
                 
@@ -138,18 +135,47 @@ extension MainView {
             )
         })
     }
+    
+    private var customWords: some View {
+        SectionView(content: {
+            HStack(content: {
+                CheckBoxView(isOn: $settings.useCustomWords, title: "Use custom words")
+                
+                Spacer()
+                
+                Button(action: { CustomWordsWindow.shared.createWindow() }, label: { SymbolsBook.navigateToWindow })
+                    .buttonStyle(PlainButtonStyle())
+            })
+        })
+    }
 }
 
 // MARK:- View Model
 extension MainView {
     struct ViewModel {
+        private init() {}
+    }
+}
+
+extension MainView.ViewModel {
+    struct Layout {
         // MARK: Properties
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 670, height: 590)
+        static let view: CGSize = .init(width: 670, height: 650)
         
         static let picker: CGSize = .init(width: 135, height: -1)
+
+        // MARK: Initializers
+        private init() {}
+    }
+}
+
+extension MainView {
+    struct Symbol {
+        // MARK: Properties
+        static var navigateToWindow: some View { SymbolsBook.navigateToWindow }
 
         // MARK: Initializers
         private init() {}

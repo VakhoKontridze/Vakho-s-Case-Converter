@@ -43,6 +43,6 @@ extension WordsGridView {
 struct WordsGridView_Previews: PreviewProvider {
     static var previews: some View {
         WordsGridView(title: "Title", words: (1...10).map { "Element \($0)" })
-            .frame(size: MainView.ViewModel.view)
+            .frame(size: MainView.ViewModel.Layout.view)
     }
 }

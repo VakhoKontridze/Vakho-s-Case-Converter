@@ -164,20 +164,20 @@ private extension AppMenu {
 // MARK:- Selectors
 private extension AppMenu {
     @objc func minimize() {
-        guard NSApp.keyWindow?.identifier == WordsWindow.shared.windowID else { return }
+        guard [SpecialWordsWindow.shared.windowID, CustomWordsWindow.shared.windowID].contains(NSApp.keyWindow?.identifier) else { return }
         NSApp.keyWindow?.performMiniaturize(nil)
     }
     @objc func zoom() {
-        guard NSApp.keyWindow?.identifier == WordsWindow.shared.windowID else { return }
+        guard [SpecialWordsWindow.shared.windowID, CustomWordsWindow.shared.windowID].contains(NSApp.keyWindow?.identifier) else { return }
         NSApp.keyWindow?.performZoom(nil)
     }
     @objc func fullscreen() {
-        guard NSApp.keyWindow?.identifier == WordsWindow.shared.windowID else { return }
+        guard [SpecialWordsWindow.shared.windowID, CustomWordsWindow.shared.windowID].contains(NSApp.keyWindow?.identifier) else { return }
         NSApp.keyWindow?.toggleFullScreen(nil)
     }
     
     @objc func creaetMainWindow() { MainWindow.shared.createWindow() }
-    @objc func creaetSpecialWordsWindow() { WordsWindow.shared.createWindow() }
+    @objc func creaetSpecialWordsWindow() { SpecialWordsWindow.shared.createWindow() }
     
     @objc func convert() { settings.convert() }
     

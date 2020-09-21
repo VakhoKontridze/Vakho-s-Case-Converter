@@ -1,5 +1,5 @@
 //
-//  WordsView.swift
+//  SpecialWordsView.swift
 //  Vakho's Case Converter
 //
 //  Created by Vakhtang Kontridze on 9/13/20.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-// MARK:- Words View
-struct WordsView: View {}
+// MARK:- Special Words View
+struct SpecialWordsView: View {}
 
 // MARK:- Body
-extension WordsView {
+extension SpecialWordsView {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true, content: {
             VStack(spacing: 10, content: {
@@ -79,22 +79,28 @@ extension WordsView {
             })
         })
             .padding(10)
-            .frame(
-                minWidth: ViewModel.view.width, idealWidth: ViewModel.view.width, maxWidth: .infinity,
-                minHeight: ViewModel.view.height, idealHeight: ViewModel.view.height, maxHeight: .infinity,
-                alignment: .top
-            )
+            .frame(size: ViewModel.Layout.view, alignment: .top)
     }
 }
 
 // MARK:- View Model
-extension WordsView {
+extension SpecialWordsView {
     struct ViewModel {
+        private init() {}
+    }
+}
+
+extension SpecialWordsView.ViewModel {
+    struct Layout {
         // MARK: Properties
-        static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
+        static let window: CGSize = .init(width: view.ideal.width, height: view.ideal.height + titleBar.height)
         static let titleBar: CGSize = .init(width: -1, height: 22)
         
-        static let view: CGSize = .init(width: 600, height: 600)
+        static let view: SizeConfiguration = .init(
+            min: .init(width: 600, height: 600),
+            ideal: .init(width: 600, height: 600),
+            max: .init(width: CGFloat.infinity, height: CGFloat.infinity)
+        )
         
         // MARK: Initializers
         private init() {}
@@ -104,6 +110,6 @@ extension WordsView {
 // MARK:- Preview
 struct WordsView_Previews: PreviewProvider {
     static var previews: some View {
-        WordsView()
+        SpecialWordsView()
     }
 }
