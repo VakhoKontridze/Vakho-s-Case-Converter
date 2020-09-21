@@ -5,7 +5,6 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Examples](#examples)
-- [Version History](#version-history)
 - [Contact](#contact)
 - [Copyright](#copyright)
 
@@ -25,15 +24,6 @@ You can simply clone the project and build the app from XCode.
 
 ## Examples
 ![Main](./img/Main.jpg)
-
-## Version History
-Version 1.1(2) (2020 Sep 21)
-- Custom words
-- Bug fixes and performance enhancements
-
-Version 1.0(1) (2020 Sep 20)
-- Standard cases
-- Title case
 
 ## Contact
 e-mail: [vakho.kontridze@gmail.com](mailto:vakho.kontridze@gmail.com)
