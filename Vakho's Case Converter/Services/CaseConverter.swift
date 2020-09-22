@@ -314,6 +314,6 @@ private extension String {
     }
 
     mutating func fixSpacing() {
-        self = self.fixedSpacing()
+        self = fixedSpacing()
     }
 }

@@ -33,11 +33,11 @@ struct WordEditView: View {
 extension WordEditView {
     var body: some View {
         SectionView(content: {
-            self.addField
+            addField
             
             List(content: {
-                ForEach(self.words.sorted(), id: \.self, content: { word in
-                    self.row(word: word)
+                ForEach(words.sorted(), id: \.self, content: { word in
+                    row(word: word)
                 })
                     .mask(Rectangle().cornerRadius(10))
             })
@@ -46,10 +46,10 @@ extension WordEditView {
     
     private var addField: some View {
         HStack(spacing: 10, content: {
-            TextField("", text: self.$word)
+            TextField("", text: $word)
                 .mask(Rectangle().cornerRadius(7))
             
-            Button("Add", action: { self.add() })
+            Button("Add", action: { add() })
                 .disabled(word.count < 2)
                 
                 .buttonStyle(PlainButtonStyle())
@@ -72,7 +72,7 @@ extension WordEditView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                 
-                Button("Remove", action: { self.deleteHandler?(word) })
+                Button("Remove", action: { deleteHandler?(word) })
                     .buttonStyle(PlainButtonStyle())
                 
                     .font(.caption)

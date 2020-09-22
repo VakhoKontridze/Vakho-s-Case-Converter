@@ -32,11 +32,11 @@ extension MainView {
     private var convert: some View {
         SectionView(content: {
             VStack(spacing: 10, content: {
-                TextField("", text: self.$settings.title)
+                TextField("", text: $settings.title)
                 
                 HStack(spacing: 10, content: {
                     Picker(
-                        selection: self.$settings.conversionCase,
+                        selection: $settings.conversionCase,
                         label: EmptyView(),
                         content: {
                             ForEach(ConversionCase.allCases, id: \.self, content: { conversion in
@@ -48,12 +48,12 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button("Convert", action: { self.settings.convert() })
-                        .disabled(self.settings.title.isEmpty)
+                    Button("Convert", action: { settings.convert() })
+                        .disabled(settings.title.isEmpty)
                     
                     Spacer()
                     
-                    Button("Clear", action: { self.settings.title = "" })
+                    Button("Clear", action: { settings.title = "" })
                         .frame(width: ViewModel.Layout.picker.width, alignment: .trailing)
                 })
             })
@@ -64,16 +64,16 @@ extension MainView {
         SectionView(content: {
             HStack(spacing: 0, content: {
                 CheckBoxView(
-                    isOn: self.$settings.principalWords.ticked,
+                    isOn: $settings.principalWords.ticked,
                     title: "Capitalize verbs, nouns, adjectives, adverbs, and pronouns of "
                 )
                 
-                NumberPickerView(value: self.$settings.principalWords.length, range: self.settings.principalWords.range)
+                NumberPickerView(value: $settings.principalWords.length, range: settings.principalWords.range)
                     .padding(.horizontal, 5)
-                    .disabled(!self.settings.principalWords.ticked)
+                    .disabled(!settings.principalWords.ticked)
                 
                 Text(" letters or more")
-                    .onTapGesture(count: 1, perform: { self.settings.principalWords.ticked.toggle() })
+                    .onTapGesture(count: 1, perform: { settings.principalWords.ticked.toggle() })
             })
         })
     }
@@ -83,16 +83,16 @@ extension MainView {
             VStack(alignment: .leading, spacing: 10, content: {
                 HStack(spacing: 0, content: {
                     CheckBoxView(
-                        isOn: self.$settings.specialWords.ticked.onChange(self.settings.syncSpecialWord),
+                        isOn: $settings.specialWords.ticked.onChange(settings.syncSpecialWord),
                         title: "Do not capitalize Articles, Prepositions, and Conjunctions of "
                     )
                     
-                    NumberPickerView(value: self.$settings.specialWords.length, range: self.settings.specialWords.range)
+                    NumberPickerView(value: $settings.specialWords.length, range: settings.specialWords.range)
                         .padding(.horizontal, 5)
-                        .disabled(!self.settings.specialWords.ticked)
+                        .disabled(!settings.specialWords.ticked)
                     
                     Text(" letters or less")
-                        .onTapGesture(count: 1, perform: { self.settings.specialWords.ticked.toggle() })
+                        .onTapGesture(count: 1, perform: { settings.specialWords.ticked.toggle() })
                     
                     Spacer()
                     
@@ -105,16 +105,16 @@ extension MainView {
                         CheckBoxView(
                             isOn: Binding<Bool>(
                                 get: {
-                                    self.settings.specialWordsPool.contains(specialWord)
+                                    settings.specialWordsPool.contains(specialWord)
                                 },
                                 set: { isIncluded in
                                     switch isIncluded {
-                                    case false: self.settings.specialWordsPool.remove(specialWord)
-                                    case true: self.settings.specialWordsPool.insert(specialWord)
+                                    case false: settings.specialWordsPool.remove(specialWord)
+                                    case true: settings.specialWordsPool.insert(specialWord)
                                     }
                                 }
                             )
-                                .onChange(self.settings.syncSpecialWords)
+                                .onChange(settings.syncSpecialWords)
                             ,
                             
                             specialWord: specialWord
@@ -129,7 +129,7 @@ extension MainView {
     private var delimiters: some View {
         SectionView(content: {
             CheckBoxView(
-                isOn: self.$settings.capitalizeDelimetered,
+                isOn: $settings.capitalizeDelimetered,
                 title: "Capitalize words before and after delimiters",
                 details: Characters.Delimiters.list
             )
