@@ -26,7 +26,7 @@ extension MainView {
             }
         })
             .padding(10)
-            .frame(size: ViewModel.Layout.view, alignment: .top)
+            .frame(size: Layout.view, alignment: .top)
     }
     
     private var convert: some View {
@@ -44,7 +44,7 @@ extension MainView {
                             })
                         }
                     )
-                        .frame(width: ViewModel.Layout.picker.width)
+                        .frame(width: Layout.picker.width)
                     
                     Spacer()
                     
@@ -54,7 +54,7 @@ extension MainView {
                     Spacer()
                     
                     Button("Clear", action: { settings.title = "" })
-                        .frame(width: ViewModel.Layout.picker.width, alignment: .trailing)
+                        .frame(width: Layout.picker.width, alignment: .trailing)
                 })
             })
         })
@@ -96,7 +96,7 @@ extension MainView {
                     
                     Spacer()
                     
-                    Button(action: { SpecialWordsWindow.shared.createWindow() }, label: { SymbolsBook.navigateToWindow })
+                    Button(action: { SpecialWordsWindow.shared.createWindow() }, label: { Symbols.navigateToWindow })
                         .buttonStyle(PlainButtonStyle())
                 })
                 
@@ -143,21 +143,15 @@ extension MainView {
                 
                 Spacer()
                 
-                Button(action: { CustomWordsWindow.shared.createWindow() }, label: { SymbolsBook.navigateToWindow })
+                Button(action: { CustomWordsWindow.shared.createWindow() }, label: { Symbols.navigateToWindow })
                     .buttonStyle(PlainButtonStyle())
             })
         })
     }
 }
 
-// MARK:- View Model
+// MARK:- Layout
 extension MainView {
-    struct ViewModel {
-        private init() {}
-    }
-}
-
-extension MainView.ViewModel {
     struct Layout {
         // MARK: Properties
         static let window: CGSize = .init(width: view.width, height: view.height + titleBar.height)
@@ -172,10 +166,15 @@ extension MainView.ViewModel {
     }
 }
 
+// MARK:- Symbols
 extension MainView {
-    struct Symbol {
+    struct Symbols {
         // MARK: Properties
-        static var navigateToWindow: some View { SymbolsBook.navigateToWindow }
+        static var navigateToWindow: some View {
+            Text("→")
+                .padding(3)
+                .background(Circle().foregroundColor(.secondary))
+        }
 
         // MARK: Initializers
         private init() {}

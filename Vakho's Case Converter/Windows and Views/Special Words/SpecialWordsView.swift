@@ -79,18 +79,12 @@ extension SpecialWordsView {
             })
         })
             .padding(10)
-            .frame(size: ViewModel.Layout.view, alignment: .top)
+            .frame(size: Layout.view, alignment: .top)
     }
 }
 
-// MARK:- View Model
+// MARK:- Layout
 extension SpecialWordsView {
-    struct ViewModel {
-        private init() {}
-    }
-}
-
-extension SpecialWordsView.ViewModel {
     struct Layout {
         // MARK: Properties
         static let window: CGSize = .init(width: view.ideal.width, height: view.ideal.height + titleBar.height)

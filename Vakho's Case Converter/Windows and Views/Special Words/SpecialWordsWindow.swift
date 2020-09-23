@@ -19,7 +19,7 @@ final class SpecialWordsWindow: WindowFactory, WindowFactoryable {
     }
     
     let rect: WindowRectParameters = .init(
-        defaultSize: SpecialWordsView.ViewModel.Layout.window
+        defaultSize: SpecialWordsView.Layout.window
     )
     
     let titleBar: WindowFactoryTitleBarSettings = .init(

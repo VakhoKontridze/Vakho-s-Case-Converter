@@ -29,7 +29,6 @@
 		87556EDC2518FC6300791AA7 /* Vakho_s_Case_Converter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87556EDA2518FC6300791AA7 /* Vakho_s_Case_Converter.xcdatamodeld */; };
 		87556EDF2518FC8F00791AA7 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87556EDE2518FC8F00791AA7 /* Word.swift */; };
 		876F2A0525175B1900DAD3F3 /* AppMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F2A0425175B1900DAD3F3 /* AppMenu.swift */; };
-		876F2AFE2518F56600DAD3F3 /* SymbolsBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F2AFD2518F56600DAD3F3 /* SymbolsBook.swift */; };
 		877353D42514D17D001EE704 /* CaseConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877353D32514D17D001EE704 /* CaseConverter.swift */; };
 		8797A82A250E20C5001DE255 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A829250E20C5001DE255 /* SettingsViewModel.swift */; };
 		8797A82D250E2102001DE255 /* WordGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797A82C250E2102001DE255 /* WordGroup.swift */; };
@@ -69,7 +68,6 @@
 		87556EDB2518FC6300791AA7 /* Vakho_s_Case_Converter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vakho_s_Case_Converter.xcdatamodel; sourceTree = "<group>"; };
 		87556EDE2518FC8F00791AA7 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		876F2A0425175B1900DAD3F3 /* AppMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenu.swift; sourceTree = "<group>"; };
-		876F2AFD2518F56600DAD3F3 /* SymbolsBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsBook.swift; sourceTree = "<group>"; };
 		877353D32514D17D001EE704 /* CaseConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseConverter.swift; sourceTree = "<group>"; };
 		8797A829250E20C5001DE255 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		8797A82C250E2102001DE255 /* WordGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGroup.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				87529EFD250B90C60056C74A /* Assets.xcassets */,
-				876F2AFD2518F56600DAD3F3 /* SymbolsBook.swift */,
 				8797A835250E22CF001DE255 /* SpecialWords.json */,
 			);
 			path = Resources;
@@ -370,7 +367,6 @@
 				87529F50250E0EC20056C74A /* Array.swift in Sources */,
 				87556ED22518F91F00791AA7 /* CustomWordsView.swift in Sources */,
 				8797A8772510ACC8001DE255 /* Charaters.swift in Sources */,
-				876F2AFE2518F56600DAD3F3 /* SymbolsBook.swift in Sources */,
 				87529F37250CBB5B0056C74A /* MainView.swift in Sources */,
 				87529F31250CBAC50056C74A /* main.swift in Sources */,
 				877353D42514D17D001EE704 /* CaseConverter.swift in Sources */,
