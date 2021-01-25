@@ -1,6 +1,6 @@
 # Vakho's Case Converter
 
-## Table of contents
+## Table of Contents
 - [Description](#description)
 - [Technologies](#technologies)
 - [Setup](#setup)
